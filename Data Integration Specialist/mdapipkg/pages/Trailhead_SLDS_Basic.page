@@ -1,0 +1,36 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Salesforce Lightning Design System Trailhead Module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Import the Design System style sheet -->
+  <apex:slds />
+</head>
+<body>
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="slds-scope">
+    <!-- MASTHEAD -->
+    <p class="slds-text-heading--label slds-m-bottom--small">
+      Salesforce Lightning Design System Trailhead Module
+    </p>
+    <!-- / MASTHEAD -->
+    <!-- PRIMARY CONTENT WRAPPER -->
+    <div class="myapp">
+      <!-- SECTION - BADGE COMPONENTS -->
+      <section aria-labelledby="badges">
+        <h2 id="badges" class="slds-text-heading--large slds-m-vertical--large">Badges</h2>
+        <div>
+          <span class="slds-badge">Badge</span>
+          <span class="slds-badge slds-theme--inverse">Badge</span>
+        </div>
+      </section>
+      <!-- / SECTION - BADGE COMPONENTS -->
+    </div>
+    <!-- / PRIMARY CONTENT WRAPPER -->
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->
+</body>
+</html>
+</apex:page>
