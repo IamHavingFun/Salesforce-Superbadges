@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForRecordHome,force:appHostable,lightning:actionOverride,force:hasRecordId">
+    <aura:attribute name="speaker" type="Speaker__c" />
+    <aura:attribute name="recordId" type="String" />
+    <div class="slds-p-bottom_large slds-p-left_large" style="width:600px">
+        <lightning:recordEditForm aura:id="recordViewForm"
+                                  recordId="{!v.recordId}"
+                                  recordTypeId="{!v.speaker}"
+                                  objectApiName="Speaker__c"
+                                  onsuccess="{!c.onSuccess}">
+            <lightning:messages />
+            <lightning:inputField fieldName="First_Name__c" />
+            <lightning:inputField fieldName="Last_Name__c" />
+            <lightning:inputField fieldName="Email__c" />
+            <lightning:inputField fieldName="Bio__c" />
+            <lightning:button aura:id="submit" type="submit" label="Update Speaker" class="slds-m-top_medium" />
+        </lightning:recordEditForm>
+    </div>
+</aura:component>

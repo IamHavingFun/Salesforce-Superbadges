@@ -1,0 +1,45 @@
+<aura:component>
+    <aura:attribute name="boat" type="Boat__c"/>
+    <aura:attribute name="boatReview" type="BoatReview__c" access="private"/>
+    <aura:attribute name="newBoatReview" type="BoatReview__c" access="private"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+    <aura:registerEvent name="BoatReviewAdded" type="c:BoatReviewAdded"/>
+    <force:recordData aura:id="service" 
+                      mode="EDIT" 
+                      fields="Id,Name,Comment__c,Boat__c,Rating__c"
+                      targetRecord="{! v.newBoatReview }"
+                      targetFields="{! v.boatReview }"
+                      targetError="{! v.recordError }"
+                      recordUpdated="{! c.onRecordUpdated }"/>
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12" padding="around-small">
+            <div class="slds-form-element">
+                <label for="Title">Title</label>
+                <!--<label class="slds-form-element__label">Title</label>-->
+                <div class="slds-form-element__control">
+                    <lightning:input aura:id="Title" label="Title" name="title" value="{! v.boatReview.Name }"/>
+                </div>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" padding="around-small">
+            <div class="slds-form-element">
+                <label for="Description">Description</label>
+                <!--<label class="slds-form-element__label">Description</label>-->
+                <div class="slds-form-element__control">
+                    <lightning:inputRichText aura:id="Description" title="Description" placeholder="Comment" value="{! v.boatReview.Comment__c }" disabledCategories="FORMAT_FONT"/>
+                </div>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" padding="around-small">
+            <div class="slds-form-element">
+                <c:FiveStarRating value="{!v.boatReview.Rating__c}"/>
+            </div>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" padding="around-small">
+            <div class="slds-p-left_x-small">
+                <lightning:button label="Submit" title="Submit" iconName="utility:save" onclick="{! c.onSave }" />
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

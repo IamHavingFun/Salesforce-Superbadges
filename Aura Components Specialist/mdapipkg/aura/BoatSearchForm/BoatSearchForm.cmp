@@ -1,0 +1,25 @@
+<aura:component controller="BoatSearchController">
+    <aura:registerEvent name="formsubmit" type="c:FormSubmit"/>
+    <aura:attribute name="boatTypes" type="BoatType__c[]"/>
+    <aura:attribute name="selectedBoatType" type="Id"/>
+    <aura:attribute name="createRecordSupport" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }" />
+        <lightning:layout horizontalAlign="center">
+            <lightning:layoutItem padding="horizontal-medium">
+                <lightning:select class="label-hidden" name="boattypes" value="{! v.selectedBoatType }" variant="label-hidden">
+                    <option value="">All Types</option>
+                    <aura:iteration items="{! v.boatTypes }" var="boatType">
+                        <option value="{! boatType.Id }" text="{! boatType.Name }"></option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem>
+                <div class="slds-button-group" role="group">
+                    <lightning:button variant="brand" label="Search" title="Search" onclick="{! c.onFormSubmit }" class="slds-button"/>
+                    <aura:if isTrue="{! v.createRecordSupport }">
+                        <lightning:button variant="neutral" label="New" title="New" onclick="{! c.handleNew }" class="slds-button"/>
+                    </aura:if>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+</aura:component>
